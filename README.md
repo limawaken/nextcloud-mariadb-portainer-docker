@@ -46,52 +46,52 @@ password: secret
 # method 1 - install containers and set up database connection
 this uses the standard nextcloud docker, which does not include SMB/CIFS external folders
 
-install mariadb docker from portainer
-ref https://hub.docker.com/_/mariadb
-add new volume "mariadb"
-select MariaDB from App Templates
-set root password - secret
-click on + Show advanced options
-map host 3306 to container 3306
-map container folder /var/lib/mysql to volume mariadb
-deploy
-stop container
-rename to mariadb
+install mariadb docker from portainer  
+ref https://hub.docker.com/_/mariadb  
+add new volume "mariadb"  
+select MariaDB from App Templates  
+set root password - secret  
+click on + Show advanced options  
+map host 3306 to container 3306  
+map container folder /var/lib/mysql to volume mariadb  
+deploy  
+stop container  
+rename to mariadb  
 
-nextcloud docker install from portainer
-ref https://github.com/nextcloud/docker
-add volume "nextcloud"
-create container
-name nextcloud
-image - nextcloud:latest
-publish network port
-map host 80 to container 80
-map container folder /var/www/html to volume nextcloud
-hit deploy
+nextcloud docker install from portainer  
+ref https://github.com/nextcloud/docker  
+add volume "nextcloud"  
+create container  
+name nextcloud  
+image - nextcloud:latest  
+publish network port  
+map host 80 to container 80  
+map container folder /var/www/html to volume nextcloud  
+hit deploy  
 
 # initial setup
-open nextcloud webpage
-create admin user
-username: admin
-password: secret
-storage & database option - select mysql/mariadb
-database user - root
-database password - secret (as set during mariadb docker install)
-database name - nextcloud
-database host - nextcloud docker ip & port ie 172.17.0.3:3306
-hit install
-install recommended apps
+open nextcloud webpage  
+create admin user  
+username: admin  
+password: secret  
+storage & database option - select mysql/mariadb  
+database user - root  
+database password - secret (as set during mariadb docker install)  
+database name - nextcloud  
+database host - nextcloud docker ip & port ie 172.17.0.3:3306  
+hit install  
+install recommended apps  
 
 # method 2 - docker-compose / stacks in portainer to build docker image with SMB support
 docker-compose ref - https://github.com/nextcloud/docker#base-version---apache
 adding features ref - https://github.com/nextcloud/docker#adding-features
 
-we will be using the full dockerfile for adding all optional packages (except libreoffice)
-for this to work, the Dockerfile location needs to be specified in docker-compose
-by replacing image: nextcloud:latest with build: /data/nextcloud_full
+we will be using the full dockerfile for adding all optional packages (except libreoffice)  
+for this to work, the Dockerfile location needs to be specified in docker-compose  
+by replacing image: nextcloud:latest with build: /data/nextcloud_full  
 
-create nextcloud_data folder with the required dockerfiles for portainer
-we run these commands from the host
+create nextcloud_data folder with the required dockerfiles for portainer  
+we run these commands from the host  
 
 ```
 cd /var/lib/docker/volumes/portainer_data/_data
@@ -101,32 +101,32 @@ wget https://raw.githubusercontent.com/nextcloud/docker/master/.examples/dockerf
 wget https://raw.githubusercontent.com/nextcloud/docker/master/.examples/dockerfiles/full/apache/supervisord.conf
 ```
 
-go back to portainer and add stack
+go back to portainer and add stack  
 paste docker-compose.yml and deploy
 
 # additional nextcloud setup
 
 # add External Storages and LDAP / AD integration
-configure AD integration
-server: 192.168.8.6
-port: 389
-admin username: adm1n.cloud@SMSB.local
-password: secret
-Base DN: dc=SMSB,dc=local
-object classes: person
-from groups: SMSB Cloud Access
-login attributes: AD username
-groups: empty
-under Expert settings - internal username attribute: sAMAccountname
+configure AD integration  
+server: 192.168.8.6  
+port: 389  
+admin username: adm1n.cloud@SMSB.local  
+password: secret  
+Base DN: dc=SMSB,dc=local  
+object classes: person  
+from groups: SMSB Cloud Access  
+login attributes: AD username  
+groups: empty  
+under Expert settings - internal username attribute: sAMAccountname  
 
 
 # additional notes
 
 # updating nextcloud docker
 
-ONLY FOR METHOD 1
-ref https://github.com/nextcloud/docker#update-to-a-newer-version
-pull new image
+ONLY FOR METHOD 1  
+ref https://github.com/nextcloud/docker#update-to-a-newer-version  
+pull new image  
 ```
 docker pull nextcloud:latest
 ```
@@ -142,10 +142,10 @@ docker run -d -p 8080:80 -v nextcloud:/var/www/html nextcloud
 
 in portainer just remove the container and create it again.
 
-for method 2 (docker-compose custom build)
-in portainer go to stacks
-edit nextcloud stack
-update stack, pull and re-deploy
+for method 2 (docker-compose custom build)  
+in portainer go to stacks  
+edit nextcloud stack  
+update stack, pull and re-deploy  
 
 # updating portainer
 ref https://docs.portainer.io/start/upgrade/docker
