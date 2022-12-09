@@ -11,8 +11,8 @@ user - nextcloud
 password - secret  
 
 # install docker
-ref https://docs.docker.com/engine/install/debian/#install-using-the-repository
-running from console as root
+ref https://docs.docker.com/engine/install/debian/#install-using-the-repository  
+running from console as root  
 
 ```
 sudo apt update
