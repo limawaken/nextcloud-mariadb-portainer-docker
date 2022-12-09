@@ -72,7 +72,7 @@ ref https://github.com/nextcloud/docker
 - map container folder /var/www/html to volume nextcloud
 - hit deploy
 
-# initial setup
+initial setup
 - open nextcloud webpage
 - create admin user
 - username: admin
