@@ -55,8 +55,7 @@ ref https://hub.docker.com/_/mariadb
 - map host 3306 to container 3306
 - map container folder /var/lib/mysql to volume mariadb
 - deploy
-- stop container
-- optional - rename to mariadb
+- optional for people with OCD - stop container and rename to mariadb
 
 nextcloud docker install from portainer  
 ref https://github.com/nextcloud/docker  
