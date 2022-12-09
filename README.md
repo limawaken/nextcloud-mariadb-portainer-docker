@@ -99,8 +99,8 @@ we run these commands from the host
 cd /var/lib/docker/volumes/portainer_data/_data
 mkdir nextcloud_full
 cd nextcloud_full
-wget https://raw.githubusercontent.com/nextcloud/docker/master/.examples/dockerfiles/full/apache/Dockerfile
-wget https://raw.githubusercontent.com/nextcloud/docker/master/.examples/dockerfiles/full/apache/supervisord.conf
+wget https://raw.githubusercontent.com/limawaken/nextcloud-mariadb-portainer-docker/master/Dockerfile
+wget https://raw.githubusercontent.com/limawaken/nextcloud-mariadb-portainer-docker/master/supervisord.conf
 ```
 
 go back to portainer and add stack  
