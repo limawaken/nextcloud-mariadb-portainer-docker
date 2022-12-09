@@ -2,9 +2,9 @@
 
 Using Debian 11 64-bit
 
-root password - secret
-user - nextcloud
-password - secret
+root password - secret  
+user - nextcloud  
+password - secret  
 
 # install docker
 ref https://docs.docker.com/engine/install/debian/#install-using-the-repository
