@@ -46,41 +46,41 @@ password: secret
 # method 1 - install containers and set up database connection
 this uses the standard nextcloud docker, which does not include SMB/CIFS external folders
 
-install mariadb docker from portainer
-1. ref https://hub.docker.com/_/mariadb
-2. add new volume "mariadb"
-3. select MariaDB from App Templates
-4. set root password - secret
-5. click on + Show advanced options
-6. map host 3306 to container 3306
-7. map container folder /var/lib/mysql to volume mariadb
-8. deploy
-9. stop container
-10. optional - rename to mariadb
+install mariadb docker from portainer  
+ref https://hub.docker.com/_/mariadb  
+- add new volume "mariadb"
+- select MariaDB from App Templates
+- set root password - secret
+- click on + Show advanced options
+- map host 3306 to container 3306
+- map container folder /var/lib/mysql to volume mariadb
+- deploy
+- stop container
+- optional - rename to mariadb
 
 nextcloud docker install from portainer  
 ref https://github.com/nextcloud/docker  
-add volume "nextcloud"  
-create container  
-name nextcloud  
-image - nextcloud:latest  
-publish network port  
-map host 80 to container 80  
-map container folder /var/www/html to volume nextcloud  
-hit deploy  
+- add volume "nextcloud"
+- create container
+- name nextcloud
+- image - nextcloud:latest
+- publish network port
+- map host 80 to container 80
+- map container folder /var/www/html to volume nextcloud
+- hit deploy
 
 # initial setup
-open nextcloud webpage  
-create admin user  
-username: admin  
-password: secret  
-storage & database option - select mysql/mariadb  
-database user - root  
-database password - secret (as set during mariadb docker install)  
-database name - nextcloud  
-database host - nextcloud docker ip & port ie 172.17.0.3:3306  
-hit install  
-install recommended apps  
+- open nextcloud webpage
+- create admin user
+- username: admin
+- password: secret
+- storage & database option - select mysql/mariadb
+- database user - root
+- database password - secret (as set during mariadb docker install)
+- database name - nextcloud
+- database host - nextcloud docker ip & port ie 172.17.0.3:3306
+- hit install
+- install recommended apps
 
 # method 2 - docker-compose / stacks in portainer to build docker image with SMB support
 docker-compose ref - https://github.com/nextcloud/docker#base-version---apache
