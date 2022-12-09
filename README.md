@@ -17,9 +17,7 @@ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o 
 echo \
 "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
 $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
 
-```
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
@@ -31,11 +29,15 @@ sudo docker run hello-world
 # install portainer-ce docker 
 ref https://docs.portainer.io/start/install/server/docker/linux
 
+```
 docker volume create portainer_data
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+```
 
 # check that portainer has started
+```
 docker ps
+```
 
 # 1st time login to portainer create admin user
 username: admin
@@ -91,11 +93,13 @@ by replacing image: nextcloud:latest with build: /data/nextcloud_full
 create nextcloud_data folder with the required dockerfiles for portainer
 we run these commands from the host
 
+```
 cd /var/lib/docker/volumes/portainer_data/_data
 mkdir nextcloud_full
 cd nextcloud_full
 wget https://raw.githubusercontent.com/nextcloud/docker/master/.examples/dockerfiles/full/apache/Dockerfile
 wget https://raw.githubusercontent.com/nextcloud/docker/master/.examples/dockerfiles/full/apache/supervisord.conf
+```
 
 go back to portainer and add stack
 paste docker-compose.yml and deploy
@@ -123,13 +127,20 @@ under Expert settings - internal username attribute: sAMAccountname
 ONLY FOR METHOD 1
 ref https://github.com/nextcloud/docker#update-to-a-newer-version
 pull new image
-$ docker pull nextcloud:latest
+```
+docker pull nextcloud:latest
+```
 remove old container
-$ docker stop <your_nextcloud_container>
-$ docker rm <your_nextcloud_container>
+```
+docker stop <your_nextcloud_container>
+docker rm <your_nextcloud_container>
+```
 recreate docker container
-$ docker run -d -p 8080:80 -v nextcloud:/var/www/html nextcloud
-# in portainer just remove the container and create it again.
+```
+docker run -d -p 8080:80 -v nextcloud:/var/www/html nextcloud
+```
+
+in portainer just remove the container and create it again.
 
 for method 2 (docker-compose custom build)
 in portainer go to stacks
@@ -138,7 +149,9 @@ update stack, pull and re-deploy
 
 # updating portainer
 ref https://docs.portainer.io/start/upgrade/docker
+```
 docker stop portainer
 docker rm portainer
 docker pull portainer/portainer-ce:latest
 docker run -d -p 8000:8000 -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+```
