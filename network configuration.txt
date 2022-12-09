@@ -1,0 +1,38 @@
+# network configuration
+
+# check ip address
+ip address
+
+# setting static ip
+# https://www.cyberciti.biz/faq/add-configure-set-up-static-ip-address-on-debianlinux/
+
+# network interfaces file /etc/network/interfaces
+# change everything under primary interface:
+# configure static IP - 192.168.8.11
+# add subnet mask - 255.255.255.0
+# setup default gateway - 192.168.8.254
+# DNS server - 192.168.8.6
+
+sudo nano /etc/network/interfaces
+
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5)
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+ 
+# The primary network interface
+auto ens192
+iface ens192  inet static
+ address 192.168.2.236
+ netmask 255.255.255.0
+ gateway 192.168.2.254
+ dns-domain SMSB.local
+ dns-nameservers 192.168.2.254
+
+# to change back to DHCP change primary network back to:
+# allow-hotplug ens192
+# iface ens192 inet dhcp

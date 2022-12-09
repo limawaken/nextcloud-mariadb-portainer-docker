@@ -1,0 +1,10 @@
+windows server preparation
+
+create cloud account admin
+username: adm1n.cloud
+password: secret
+
+create nextcloud users group
+MyBusiness > SMSB Security Group > SMSB Cloud Access
+
+
