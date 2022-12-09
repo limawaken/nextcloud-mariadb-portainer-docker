@@ -40,7 +40,7 @@ docker ps
 ```
 
 # 1st time login to portainer create admin user
-username: admin
+username: admin  
 password: secret
 
 # method 1 - install containers and set up database connection
