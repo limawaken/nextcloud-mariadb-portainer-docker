@@ -90,7 +90,7 @@ docker-compose ref - https://github.com/nextcloud/docker#base-version---apache
 adding features ref - https://github.com/nextcloud/docker#adding-features  
 
 we will be using the full nextcloud dockerfile from https://github.com/nextcloud/docker/tree/master/.examples/dockerfiles for adding all optional packages (except libreoffice)  
-for this to work, the Dockerfile location needs to be specified in docker-compose.yml by replacing ```image: nextcloud:latest``` with ```build: /data/nextcloud_full```  
+for this to work, the Dockerfile location needs to be specified in docker-compose.yml by replacing `image: nextcloud:latest` with `build: /data/nextcloud_full`  
 
 create nextcloud_data folder with the required dockerfiles for portainer  
 we run these commands from the host  
