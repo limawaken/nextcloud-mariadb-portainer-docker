@@ -1,7 +1,8 @@
 # Installing Nextcloud MariaDB and Portainer-ce dockers in Linux VM
+
 # Using Debian 11 64-bit
 
-# root password - P@ssw0rd
+# root password - secret
 # user - nextcloud
 # password - secret
 
