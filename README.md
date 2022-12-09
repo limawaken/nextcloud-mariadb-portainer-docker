@@ -83,8 +83,8 @@ ref https://github.com/nextcloud/docker
 - install recommended apps
 
 # method 2 - docker-compose / stacks in portainer to build docker image with SMB support
-docker-compose ref - https://github.com/nextcloud/docker#base-version---apache
-adding features ref - https://github.com/nextcloud/docker#adding-features
+docker-compose ref - https://github.com/nextcloud/docker#base-version---apache  
+adding features ref - https://github.com/nextcloud/docker#adding-features  
 
 we will be using the full dockerfile for adding all optional packages (except libreoffice)  
 for this to work, the Dockerfile location needs to be specified in docker-compose  
