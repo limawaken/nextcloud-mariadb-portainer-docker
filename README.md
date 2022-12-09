@@ -3,7 +3,7 @@
 Using Debian 11 64-bit  
 using network install from minimal cd amd64 version from https://www.debian.org/CD/netinst/  
 install without desktop options  
-install with standard system tools  
+install with standard system utilities  
 set static IP  
 
 root password - secret  
