@@ -4,11 +4,10 @@ Using Debian 11 64-bit
 using network install from minimal cd amd64 version from https://www.debian.org/CD/netinst/  
 install without desktop options  
 install with standard system utilities  
-set static IP  
-
 root password - secret  
 user - nextcloud  
 password - secret  
+set static IP  
 
 # install docker
 ref https://docs.docker.com/engine/install/debian/#install-using-the-repository  
