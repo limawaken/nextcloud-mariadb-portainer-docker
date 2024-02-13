@@ -5,9 +5,20 @@ using network install from minimal cd amd64 version from https://www.debian.org/
 install without desktop options  
 install with standard system utilities  
 root password - secret  
-user - nextcloud  
+user - texas  
 password - secret  
-set static IP  
+set static IP
+
+# install sudo
+ref https://milq.github.io/enable-sudo-user-account-debian/
+Install sudo with apt install sudo.
+```
+apt install sudo
+```
+Add the user account to the group sudo with /sbin/adduser username sudo. Where username is your user account.
+```
+/sbin/adduser texas sudo
+```
 
 # install docker
 ref https://docs.docker.com/engine/install/debian/#install-using-the-repository  
@@ -34,8 +45,8 @@ sudo docker run hello-world
 ref https://docs.portainer.io/start/install/server/docker/linux
 
 ```
-docker volume create portainer_data
-docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+sudo docker volume create portainer_data
+sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 ```
 
 check that portainer has started  
@@ -103,6 +114,13 @@ wget https://raw.githubusercontent.com/limawaken/nextcloud-mariadb-portainer-doc
 wget https://raw.githubusercontent.com/limawaken/nextcloud-mariadb-portainer-docker/master/supervisord.conf
 ```
 
+the official example files
+```
+wget https://raw.githubusercontent.com/nextcloud/docker/master/.examples/dockerfiles/full/apache/Dockerfile
+wget https://raw.githubusercontent.com/nextcloud/docker/master/.examples/dockerfiles/full/apache/supervisord.conf
+```
+
+
 go back to portainer and add stack  
 paste docker-compose.yml and deploy
 
@@ -156,4 +174,11 @@ docker stop portainer
 docker rm portainer
 docker pull portainer/portainer-ce:latest
 docker run -d -p 8000:8000 -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+```
+
+# install vmware tools
+ref https://docs.vmware.com/en/VMware-Tools/12.2.0/com.vmware.vsphere.vmwaretools.doc/GUID-C48E1F14-240D-4DD1-8D4C-25B6EBE4BB0F.html
+```
+sudo apt-get update
+sudo apt-get install open-vm-tools
 ```

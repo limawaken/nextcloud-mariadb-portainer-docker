@@ -7,7 +7,7 @@ volumes:
 services:
   db:
     image: mariadb:latest
-    restart: always
+    restart: unless-stopped
     ports:
       - 3306:3306
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
@@ -18,10 +18,23 @@ services:
       - MYSQL_PASSWORD=nextcloud
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
+  
+  collabora:
+    image: collabora/code
+    restart: unless-stopped
+    ports:
+      - 9980:9980
+    environment:
+      - password=nextcloud
+      - username=nextcloud
+      - domain=cloud.smsb.com.my
+      - server_name=office.smsb.com.my
+      - aliasgroup1=https://cloud.smsb.com.my:443
+      - extra_params=--o:ssl.enable=false --o:ssl.termination=true
 
   app:
     build: /data/nextcloud_full
-    restart: always
+    restart: unless-stopped
     ports:
       - 80:80
     links:
